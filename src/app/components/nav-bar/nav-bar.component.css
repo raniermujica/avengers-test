@@ -1,0 +1,26 @@
+
+.container-fluid {
+    height: 12vh;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.navLogo {
+    width: 48px;
+    margin-left: 1vw;
+}
+
+.central-logo {
+    height: 60px;
+}
+
+input {
+    background-color: #a4c4d1;
+}
+
+::placeholder {
+    color: #d91720;
+}
+
+form {
+    margin-right: 1vw;
+}
