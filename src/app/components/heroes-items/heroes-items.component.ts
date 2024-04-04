@@ -9,5 +9,9 @@ import { Heroes } from '../../interfaces/heroes';
   styleUrl: './heroes-items.component.css',
 })
 export class HeroesItemsComponent {
-  @Input() heroeData!: Heroes;
+  @Input() heroData!: Heroes;
+
+  getImageUrl(thumbnail: any): string {
+    return `${thumbnail.path}.${thumbnail.extension}`;
+  }
 }

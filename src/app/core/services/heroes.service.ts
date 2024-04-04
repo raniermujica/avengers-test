@@ -26,9 +26,9 @@ export class HeroesService {
     const hash = "fe3d7b991c2f984ef6e3bdbe29d8edd4";
   
     // const url = `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
-    const url = 'https://gateway.marvel.com/v1/public/characters?ts=1&apikey=e239327ed710df8af76740d70662b78e&hash=fe3d7b991c2f984ef6e3bdbe29d8edd4';
+    const url = 'https://gateway.marvel.com/v1/public/characters?limit=100&ts=1&apikey=e239327ed710df8af76740d70662b78e&hash=fe3d7b991c2f984ef6e3bdbe29d8edd4';
 
-    console.log('URL de solicitud', url);
+    // console.log('URL de solicitud', url);
 
     return this.http.get<HeroesResults>(url).pipe(catchError((error:HttpErrorResponse) => {
        let errorMessage = "";

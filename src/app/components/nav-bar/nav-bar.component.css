@@ -1,4 +1,8 @@
 
+#main-nav {
+    justify-content: space-around;
+}
+
 .container-fluid {
     height: 12vh;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;

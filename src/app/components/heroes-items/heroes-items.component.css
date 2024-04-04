@@ -1,0 +1,18 @@
+#hero-cards {
+    margin-top: 3vh;
+}
+
+.card-body {
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+img {
+    height: 400px;
+    width: 400px;
+}
+
+h5 {
+    text-align: center;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

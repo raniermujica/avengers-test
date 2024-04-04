@@ -1,6 +1,7 @@
 export interface Heroes {
     name: string;
-    url: string;
+    thumbnail: {};
+    path: string;
 }
 
 export interface HeroesResults {
