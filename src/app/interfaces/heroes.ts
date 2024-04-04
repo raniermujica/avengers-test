@@ -14,7 +14,31 @@ export interface HeroesResults {
           limit: number,
           total: number,
           count: number,
-          results: []
-        },
-        etag: string
+          results: any [
+          //   {
+          //   id: number,
+          //   name: string,
+          //   description: string,
+          //   modified: Date,
+          //   resourceURI: string,
+          //   urls: [
+          //     {
+          //       type: string,
+          //       url: string
+          //     }
+          //   ],
+          //   comics: {
+          //     available: number,
+          //     returned: number,
+          //     collectionURI: string,
+          //     items: [
+          //       {
+          //         resourceURI: string,
+          //         name: string
+          //       }
+          //     ]
+          //   }
+          // }
+          ]
+        }
 };

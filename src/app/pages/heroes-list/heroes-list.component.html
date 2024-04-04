@@ -1,9 +1,13 @@
-<!-- @if (heroesResults$ | async; as dataObject) {
+@if (heroesResults$ | async; as dataObject) {
     <ul>
-        @for (item of dataObject.results; track item.name){
+        @for (item of dataObject.data.results; track item.results){
             <li>
                 <app-heroes-items [heroeData]="item"/>
             </li>
         }
     </ul>
-} -->
+}
+
+@if (errorMessage) {
+    <app-error-message [errorMessage]="errorMessage" />
+}
