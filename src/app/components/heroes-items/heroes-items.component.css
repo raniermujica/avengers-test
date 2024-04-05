@@ -11,8 +11,19 @@ img {
     width: 400px;
 }
 
+.router-tittle {
+    text-decoration: none;
+}
+
 h5 {
     text-align: center;
     color: white;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -9,6 +10,16 @@ import { Component } from '@angular/core';
   styleUrl: './nav-bar.component.css',
 })
 
-export class NavBarComponent {
+export default class NavBarComponent {
 
+  scrolled: boolean = false;
+  
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (window.scrollY > 0) {
+      this.scrolled = true;
+    } else {
+      this.scrolled = false;
+    }
+  }
 }

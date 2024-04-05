@@ -1,6 +1,12 @@
+<router-outlet/>
 <header>
-<app-nav-bar/> 
+  <app-nav-bar />
 </header>
 <body>
-<app-heroes-list/>
+    @defer () {
+    <app-heroes-list />
+} @loading {
+    <div class="loader"></div>
+}
+
 </body>

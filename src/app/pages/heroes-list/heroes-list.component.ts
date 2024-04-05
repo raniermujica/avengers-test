@@ -13,7 +13,7 @@ import { HeroesResults } from '../../interfaces/heroes';
     styleUrl: './heroes-list.component.css',
     imports: [HeroesItemsComponent, AsyncPipe, ErrorMessageComponent]
 })
-export class HeroesListComponent implements OnInit {
+export default class HeroesListComponent implements OnInit {
   public heroesResults$!: Observable<HeroesResults>;
   public errorMessage!: string;
   constructor(private service: HeroesService) {}

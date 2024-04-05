@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { HeroesResults } from '../../interfaces/heroes';
+import { HeroesResults, HeroFeatures } from '../../interfaces/heroes';
 import { environment } from '../../../envinroment';
 import md5 from 'md5';
 
@@ -42,4 +42,22 @@ export class HeroesService {
        return throwError(() => errorMessage);
     }));
   }
-}
+
+
+  getHeroId(characterId: number): Observable<HeroFeatures> {
+    const url = `https://gateway.marvel.com/v1/public/characters/${characterId}?ts=1&apikey=e239327ed710df8af76740d70662b78e&hash=fe3d7b991c2f984ef6e3bdbe29d8edd4`;
+
+    return this.http.get<HeroFeatures>(url).pipe(catchError((error:HttpErrorResponse) => {
+      let errorMessage = "";
+
+      if (error.error instanceof ErrorEvent) {
+       errorMessage = `Error: ${error.error.message}`;
+      } else {
+       errorMessage = `Error code: ${error.status}; message: ${error.message}`;
+      }
+
+      return throwError(() => errorMessage);
+   }));
+  };
+};
+

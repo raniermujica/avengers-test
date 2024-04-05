@@ -1,5 +1,7 @@
+
 <section>
     <div>
+       
 @if (heroesResults$ | async; as dataObject) {
     <div class="gallery">
         @for (item of dataObject.data.results; track item.results){
@@ -11,5 +13,6 @@
 @if (errorMessage) {
     <app-error-message [errorMessage]="errorMessage" />
 }
+ 
 </div>
 </section>
