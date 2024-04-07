@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { HeroesResults, HeroFeatures } from '../../interfaces/heroes';
+import { Heroes } from '../../interfaces/heroes';
 import { environment } from '../../../envinroment';
 import md5 from 'md5';
 
@@ -13,7 +13,7 @@ export class HeroesService {
 
   constructor(private http: HttpClient) { }
 
-  getHeroesList(): Observable<HeroesResults> {
+  getHeroesList(): Observable<Heroes> {
 
     const publicKey = environment.publicKey;
     const privateKey = environment.privateKey;
@@ -30,7 +30,7 @@ export class HeroesService {
 
     // console.log('URL de solicitud', url);
 
-    return this.http.get<HeroesResults>(url).pipe(catchError((error:HttpErrorResponse) => {
+    return this.http.get<Heroes>(url).pipe(catchError((error:HttpErrorResponse) => {
        let errorMessage = "";
 
        if (error.error instanceof ErrorEvent) {
@@ -44,10 +44,26 @@ export class HeroesService {
   }
 
 
-  getHeroId(characterId: number): Observable<HeroFeatures> {
+  getHeroId(characterId: number): Observable<Heroes> {
     const url = `https://gateway.marvel.com/v1/public/characters/${characterId}?ts=1&apikey=e239327ed710df8af76740d70662b78e&hash=fe3d7b991c2f984ef6e3bdbe29d8edd4`;
 
-    return this.http.get<HeroFeatures>(url).pipe(catchError((error:HttpErrorResponse) => {
+    return this.http.get<Heroes>(url).pipe(catchError((error:HttpErrorResponse) => {
+      let errorMessage = "";
+
+      if (error.error instanceof ErrorEvent) {
+       errorMessage = `Error: ${error.error.message}`;
+      } else {
+       errorMessage = `Error code: ${error.status}; message: ${error.message}`;
+      }
+
+      return throwError(() => errorMessage);
+   }));
+  };
+
+  searchHeroByName(searchQuery: string): Observable<Heroes> {
+    const url = `https://gateway.marvel.com/v1/public/characters/${searchQuery}?ts=1&apikey=e239327ed710df8af76740d70662b78e&hash=fe3d7b991c2f984ef6e3bdbe29d8edd4`;
+
+    return this.http.get<Heroes>(url).pipe(catchError((error:HttpErrorResponse) => {
       let errorMessage = "";
 
       if (error.error instanceof ErrorEvent) {

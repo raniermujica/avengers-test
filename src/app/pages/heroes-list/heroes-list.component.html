@@ -1,18 +1,25 @@
-
+<header>
+  <app-nav-bar [searchFilter]="filterText"></app-nav-bar>/>
+</header>
 <section>
-    <div>
-       
-@if (heroesResults$ | async; as dataObject) {
+  <div>
+    @if (heroesResults$ | async; as dataObject) {
     <div class="gallery">
-        @for (item of dataObject.data.results; track item.results){
-                <app-heroes-items [heroData]="item"/>
-        }
+      <!-- @defer (on viewport) { -->
+      @for (item of dataObject.data.results; track item.result ) {
+      <app-heroes-items [heroData]="item" />
+      }
+      <!-- } @placeholder {
+                <h4>More heroes</h4>
+            } -->
     </div>
-}
+    }
+    <section>
+      <app-hero-details />
+    </section>
+  </div>
 
-@if (errorMessage) {
+  <!-- @if (errorMessage) {
     <app-error-message [errorMessage]="errorMessage" />
-}
- 
-</div>
+} -->
 </section>

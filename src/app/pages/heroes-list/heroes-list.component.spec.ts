@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeroesListComponent } from './heroes-list.component';
+import  HeroesListComponent  from './heroes-list.component';
 
 describe('HeroesListComponent', () => {
   let component: HeroesListComponent;

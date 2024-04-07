@@ -1,15 +1,17 @@
-<div class="card mb-3" style="max-width: 700px;">
+
+@if (heroDetail) {
+<div class="card mb-5" id="card-detail" style="max-width: 700px;">
     <div class="row g-0">
       <div class="col-md-4">
         <img
-          src="getImageUrl{{heroDetail?.thumbnail}}"
-          alt=""
+          [src]="getImageUrl(heroDetail)"
+          alt="icon-hero"
           class="img-fluid rounded-start"
         />
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{ heroDetail?.description }}</h5>
+          <h5 class="card-title">{{ heroDetail.name }}</h5>
           <p class="card-text">
           </p>
           <p class="card-text">
@@ -19,3 +21,4 @@
       </div>
     </div>
   </div>
+};

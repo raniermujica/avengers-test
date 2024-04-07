@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './heroes-items.component.css',
 })
 export class HeroesItemsComponent implements OnInit {
+[x: string]: any;
 
   @Input() heroData!: Heroes;
   
@@ -22,13 +23,12 @@ export class HeroesItemsComponent implements OnInit {
         if (entry.isIntersecting) {
           entry.target.classList.add('on view');
           observerView.unobserve(entry.target);
+          console.log(this.heroData)
         }
       } )
     })
     observerView.observe(this.elementRef.nativeElement);
   }
-  
-
   getImageUrl(thumbnail: any): string {
     return `${thumbnail.path}.${thumbnail.extension}`;
   }
