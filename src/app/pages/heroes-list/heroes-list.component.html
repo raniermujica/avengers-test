@@ -1,13 +1,14 @@
 <header>
-  <app-nav-bar [searchFilter]="filterText"></app-nav-bar>/>
+  <!-- <app-nav-bar [searchFilter]="filterText" ></app-nav-bar>/> -->
+  <app-nav-bar (searchEvent)="useFilter($event)" ></app-nav-bar>/>
 </header>
 <section>
   <div>
     @if (heroesResults$ | async; as dataObject) {
     <div class="gallery">
       <!-- @defer (on viewport) { -->
-      @for (item of dataObject.data.results; track item.result ) {
-      <app-heroes-items [heroData]="item" />
+      @for (item of dataObject.data.results | heroFilter: filterText; track item.result ) {
+      <app-heroes-items [heroData]="item"/>
       }
       <!-- } @placeholder {
                 <h4>More heroes</h4>

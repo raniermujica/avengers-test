@@ -1,4 +1,4 @@
-import { Component, OnInit, output, NgModule } from '@angular/core';
+import { Component, OnInit, output, NgModule, Input } from '@angular/core';
 import { EMPTY, Observable, catchError } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { HeroesItemsComponent } from '../../components/heroes-items/heroes-items.component';
@@ -7,7 +7,7 @@ import { HeroesService } from '../../core/services/heroes.service';
 import { Heroes } from '../../interfaces/heroes';
 import NavBarComponent from '../../components/nav-bar/nav-bar.component';
 import HeroDetailsComponent from '../hero-details/hero-details.component';
-// import { HeroFilterPipe } from '../../pipes/name-filter.pipe';
+import { PipesModule } from '../../pipes.module';
 
 
 @Component({
@@ -15,18 +15,16 @@ import HeroDetailsComponent from '../hero-details/hero-details.component';
     standalone: true,
     templateUrl: './heroes-list.component.html',
     styleUrl: './heroes-list.component.css',
-    imports: [HeroesItemsComponent, AsyncPipe, ErrorMessageComponent, NavBarComponent, HeroDetailsComponent]
+    imports: [HeroesItemsComponent, AsyncPipe, ErrorMessageComponent, NavBarComponent, HeroDetailsComponent, PipesModule],
 })
+
+
 export default class HeroesListComponent implements OnInit {
-  // @NgModule({
-  //   declarations: [
-  //     HeroFilterPipe
-  //   ],
-  //   exports: [
-  //     HeroFilterPipe
-  //   ]
-  // })
-  filterText: string = 'Test';
+
+  @Input() searchFilter: string = '';
+
+  filterText: string = '';
+  
   public heroesResults$!: Observable<Heroes>;
   public errorMessage!: string;
 
@@ -35,8 +33,13 @@ export default class HeroesListComponent implements OnInit {
   ngOnInit(): void {
     this.heroesResults$ = this.service.getHeroesList().pipe(catchError((error:string) => {
       this.errorMessage = error;
-      console.log(this.heroesResults$)
+      console.log("objects", this.heroesResults$)
       return EMPTY
     }))
   }
-}
+
+  useFilter(filterText:string) {
+    console.log("Search Text", filterText)
+     this.filterText = filterText;
+  }
+};

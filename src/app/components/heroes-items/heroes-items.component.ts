@@ -1,18 +1,20 @@
 import { Component, Input, ElementRef, OnInit } from '@angular/core';
 import { Heroes } from '../../interfaces/heroes';
 import { RouterLink } from '@angular/router';
+import { PipesModule } from '../../pipes.module';
 
 @Component({
   selector: 'app-heroes-items',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, PipesModule],
   templateUrl: './heroes-items.component.html',
   styleUrl: './heroes-items.component.css',
 })
 export class HeroesItemsComponent implements OnInit {
-[x: string]: any;
+  [x: string]: any;
 
-  @Input() heroData!: Heroes;
+  @Input() heroData!: any;
+  @Input() searchFilter: string = '';
   
   constructor(private elementRef: ElementRef) {}
 

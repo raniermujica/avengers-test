@@ -4,7 +4,8 @@
   </header> -->
     <body>
       <!-- @defer () { -->
-      <app-heroes-list />
+      <!-- <app-heroes-list (searchEvent)="useFilter($event)"/> -->
+      <app-heroes-list [searchFilter]="filterText"/>
   <!-- } @loading {
       <div class="loader"></div>
   } -->

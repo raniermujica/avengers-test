@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink, RouterOutlet, RouterModule, NavigationEnd, Router } from '@angular/router';
 import  NavBarComponent  from './components/nav-bar/nav-bar.component';
-import  HeroesListComponent  from './pages/heroes-list/heroes-list.component';
+import  HeroesListComponent   from './pages/heroes-list/heroes-list.component';
 import  HeroDetailsComponent from './pages/hero-details/hero-details.component';
 
 
@@ -14,6 +14,12 @@ import  HeroDetailsComponent from './pages/hero-details/hero-details.component';
     imports: [NavBarComponent, HeroesListComponent, HeroDetailsComponent, RouterLink, RouterOutlet, RouterModule]
 })
 export class AppComponent {
+
+
+  @Input() searchFilter: string = '';
+
+  filterText: string = '';
+  
   title = 'avengers-test';
 
   showHeroDetails: boolean = false;
@@ -25,6 +31,11 @@ export class AppComponent {
       }
 
     });
+  }
+
+  useFilter(filterText:string) {
+    console.log("Search Text", filterText)
+     this.filterText = filterText;
   }
 
 }
