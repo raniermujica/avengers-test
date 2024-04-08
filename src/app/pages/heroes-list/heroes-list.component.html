@@ -1,26 +1,19 @@
+<router-outlet />
 <header>
-  <!-- <app-nav-bar [searchFilter]="filterText" ></app-nav-bar>/> -->
-  <app-nav-bar (searchEvent)="useFilter($event)" ></app-nav-bar>/>
+  <app-nav-bar (searchEvent)="useFilter($event)" />
 </header>
 <section>
   <div>
     @if (heroesResults$ | async; as dataObject) {
     <div class="gallery">
-      <!-- @defer (on viewport) { -->
-      @for (item of dataObject.data.results | heroFilter: filterText; track item.result ) {
-      <app-heroes-items [heroData]="item"/>
+      @for (item of dataObject.data.results | heroFilter: filterText; track
+      item.result ) {
+      <app-heroes-items [heroData]="item" />
       }
-      <!-- } @placeholder {
-                <h4>More heroes</h4>
-            } -->
     </div>
     }
-    <section>
-      <app-hero-details />
-    </section>
   </div>
-
-  <!-- @if (errorMessage) {
-    <app-error-message [errorMessage]="errorMessage" />
-} -->
+  <section>
+    <app-hero-details [heroData]="selectedHero$" />
+  </section>
 </section>

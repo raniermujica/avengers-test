@@ -1,27 +1,14 @@
-
 <a [routerLink]="['/details', heroData.id]">
-
-
-  
-<div class="row row-cols-1 row-cols-md-1 g-5" id="hero-cards">
-  <!-- @defer () { -->
+  <div class="row row-cols-1 row-cols-md-1 g-5" id="hero-cards">
     <div class="col">
       <div class="card border-danger border-2">
-        <img
-          [src]="getImageUrl(heroData.thumbnail)"
-          alt="thumbnail-hero"
-        />
+        <img [src]="getImageUrl(heroData.thumbnail)" alt="thumbnail-hero" />
         <div class="card-body">
           <h5 class="card-title">
-            {{heroData.name}}
+            {{ heroData.name }}
           </h5>
         </div>
       </div>
-    
     </div>
-  <!-- } @placeholder {
-    <h4>More heroes</h4>
-  } -->
-  
-  
-
+  </div></a
+>

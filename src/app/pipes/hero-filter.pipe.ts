@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'heroFilter' })
-
 export class HeroFilterPipe implements PipeTransform {
   transform(items: any[], searchQuery: string): any[] {
     if (!items) return [];
@@ -13,4 +12,4 @@ export class HeroFilterPipe implements PipeTransform {
       return item.name.toLowerCase().replace(/\./g, '').includes(searchQuery);
     });
   }
-};
+}

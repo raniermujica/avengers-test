@@ -1,16 +1,3 @@
-<router-outlet/>
-  <!-- <header>
-    <app-nav-bar />
-  </header> -->
-    <body>
-      <!-- @defer () { -->
-      <!-- <app-heroes-list (searchEvent)="useFilter($event)"/> -->
-      <app-heroes-list [searchFilter]="filterText"/>
-  <!-- } @loading {
-      <div class="loader"></div>
-  } -->
-  </body>
-
- 
-  
-
+<section>
+  <app-heroes-list [searchFilter]="filterText" />
+</section>

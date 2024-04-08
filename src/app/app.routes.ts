@@ -7,12 +7,20 @@ import { HeroesItemsComponent } from './components/heroes-items/heroes-items.com
 export const routes: Routes = [
 
       {
-        path: 'home',
-        component: HeroesListComponent,
-        children: [
-          { path: 'home', component: HeroesItemsComponent },
-          { path: 'home', component: NavBarComponent },
-          { path: 'details/:id', component: HeroDetailsComponent }
-        ],
+        path: '',
+        redirectTo: '/heroes',
+        pathMatch: 'full'
       },
-];
+      {
+        path: 'heroes',
+        component: HeroesListComponent,
+      },
+      {
+        path: 'details/:id',
+        component: HeroDetailsComponent,
+      },
+      {
+        path: '**',
+        redirectTo: '/heroes'
+      }
+    ];

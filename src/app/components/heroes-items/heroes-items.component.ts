@@ -1,6 +1,6 @@
 import { Component, Input, ElementRef, OnInit } from '@angular/core';
 import { Heroes } from '../../interfaces/heroes';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { PipesModule } from '../../pipes.module';
 
 @Component({

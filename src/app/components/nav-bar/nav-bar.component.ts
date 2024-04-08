@@ -1,10 +1,13 @@
-import { Component, EventEmitter, HostListener, Input, NgModule, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  NgModule,
+  Output,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HeroesService } from '../../core/services/heroes.service';
-// import { HeroFilterPipe } from '../../pipes/name-filter.pipe';
-
-
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,18 +16,7 @@ import { HeroesService } from '../../core/services/heroes.service';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css',
 })
-
 export default class NavBarComponent {
-
-  // @NgModule({
-  //   declarations: [
-  //     HeroFilterPipe
-  //   ],
-  //   exports: [
-  //     HeroFilterPipe
-  //   ]
-  // })
-
   @Input() searchFilter: string = '';
   @Output() searchEvent: EventEmitter<any> = new EventEmitter<any>();
 
@@ -37,42 +29,19 @@ export default class NavBarComponent {
 
   scrolled: boolean = false;
 
-  sendQueryText(event:any) {
-    console.log("Search text", event.target.value);
+  sendQueryText(event: any) {
+    console.log('Search text', event.target.value);
     this.searchQuery = event.target.value;
     this.searchEvent.emit(this.searchQuery);
   }
-  
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     if (window.scrollY > 0) {
       this.scrolled = true;
-      console.log(this.searchFilter)
+      console.log(this.searchFilter);
     } else {
       this.scrolled = false;
     }
   }
-
-  // onSearchKeydown(event: KeyboardEvent): void {
-  //   if (event.key === 'Enter') {
-  //     this.searchHeroes();
-  //   }
-  // }
-
-  // searchHeroes(): void {
-  //   if (this.searchQuery.trim()) {
-  //     this.HeroesService.searchHeroByName(this.searchQuery.trim()).subscribe(
-  //       (heroId: number | undefined) => {
-  //         if (heroId !== undefined) {
-  //           this.router.navigate(['/details', heroId]); // Redirige al componente de detalles con el ID del héroe
-  //         } else {
-  //           // Manejar el caso cuando el héroe no se encuentra
-  //         }
-  //       },
-  //     )
-  //     } else {
-  //       // Manejar caso cuando el campo de búsqueda está vacío
-  //     }
-  //   }
-  };
-
+}
