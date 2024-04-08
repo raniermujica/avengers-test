@@ -30,50 +30,20 @@ export class HeroesService {
 
     // console.log('URL de solicitud', url);
 
-    return this.http.get<Heroes>(url).pipe(catchError((error:HttpErrorResponse) => {
-       let errorMessage = "";
-
-       if (error.error instanceof ErrorEvent) {
-        errorMessage = `Error: ${error.error.message}`;
-       } else {
-        errorMessage = `Error code: ${error.status}; message: ${error.message}`;
-       }
-
-       return throwError(() => errorMessage);
-    }));
+    return this.http.get<Heroes>(url)
   }
 
 
   getHeroId(characterId: number): Observable<Heroes> {
     const url = `https://gateway.marvel.com/v1/public/characters/${characterId}?ts=1&apikey=e239327ed710df8af76740d70662b78e&hash=fe3d7b991c2f984ef6e3bdbe29d8edd4`;
 
-    return this.http.get<Heroes>(url).pipe(catchError((error:HttpErrorResponse) => {
-      let errorMessage = "";
-
-      if (error.error instanceof ErrorEvent) {
-       errorMessage = `Error: ${error.error.message}`;
-      } else {
-       errorMessage = `Error code: ${error.status}; message: ${error.message}`;
-      }
-
-      return throwError(() => errorMessage);
-   }));
+    return this.http.get<Heroes>(url)
   };
 
   searchHeroByName(searchQuery: string): Observable<Heroes> {
     const url = `https://gateway.marvel.com/v1/public/characters/${searchQuery}?ts=1&apikey=e239327ed710df8af76740d70662b78e&hash=fe3d7b991c2f984ef6e3bdbe29d8edd4`;
 
-    return this.http.get<Heroes>(url).pipe(catchError((error:HttpErrorResponse) => {
-      let errorMessage = "";
-
-      if (error.error instanceof ErrorEvent) {
-       errorMessage = `Error: ${error.error.message}`;
-      } else {
-       errorMessage = `Error code: ${error.status}; message: ${error.message}`;
-      }
-
-      return throwError(() => errorMessage);
-   }));
+    return this.http.get<Heroes>(url)
   };
 };
 
